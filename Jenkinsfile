@@ -6,30 +6,40 @@ pipeline {
     }
     agent any
     stages {
-        stage('Cloning our Git') {
-            steps {
-                git 'https://github.com/AyushWahane/Minor_test.git'
+        stage('Clone') {
+            steps{
+                sh """
+                    git clone https://github.com/AyushWahane/Minor_test.git
+                    
+                """
             }
-        }
+        }   
         stage('Building our image') {
             steps{
-                script {
-                    dockerImage = docker.build registry + ":latest"
-                }
+                sh """
+                    cd Minor_test
+                    docker login -u krishna1708 -p Abcd97@4321
+                    docker build -t krishna1708/minor_test1:$BUILD_NUMBER .
+                    
+                """
             }
         }
+        
+        
         stage('Push our image') {
             steps{
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
-                }
+                sh """
+                    docker login -u krishna1708 -p Abcd97@4321
+                    docker push krishna1708/minor_test1:$BUILD_NUMBER
+                """
             }
         }
+        
         stage('Cleaning up') {
             steps{
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh """
+                    docker rmi krishna1708/minor_test1:$BUILD_NUMBER
+                """
             }
         }
     }
