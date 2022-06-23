@@ -30,7 +30,7 @@ pipeline {
             steps{
                 sh """
                     docker login -u krishna1708 -p Abcd97@4321
-                    docker push krishna1708/minor_test1:$BUILD_NUMBER
+                    docker push krishna1708/minor_test1:latest
                 """
             }
         }
@@ -38,7 +38,7 @@ pipeline {
         stage('Cleaning up') {
             steps{
                 sh """
-                    docker rmi krishna1708/minor_test1:$BUILD_NUMBER
+                    docker rmi krishna1708/minor_test1:latest
                 """
             }
         }
