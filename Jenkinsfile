@@ -19,7 +19,7 @@ pipeline {
                 sh """
                     cd Minor_test
                     docker login -u krishna1708 -p Abcd97@4321
-                    docker build -t krishna1708/minor_test1:$BUILD_NUMBER .
+                    docker build -t krishna1708/minor_test1:latest .
                     
                 """
             }
