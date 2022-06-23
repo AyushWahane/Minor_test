@@ -18,7 +18,7 @@ pipeline {
             steps{
                 sh """
                     cd Minor_test
-                    docker login -u krishna1708 --password-stdin Abcd97@4321
+//                     docker login -u krishna1708 --password-stdin Abcd97@4321
                     docker build -t krishna1708/minor_test1:latest .
                     
                 """
