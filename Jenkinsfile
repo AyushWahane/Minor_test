@@ -6,7 +6,7 @@ pipeline {
     }
     agent any
     stages {
-        stage('Clone') {
+        stage('Clone Git Repository') {
             steps{
                 sh """
                     git clone https://github.com/AyushWahane/Minor_test.git
@@ -14,7 +14,7 @@ pipeline {
                 """
             }
         }   
-        stage('Building our image') {
+        stage('Building image') {
             steps{
                 sh """
                     cd Minor_test
@@ -25,7 +25,7 @@ pipeline {
         }
         
         
-        stage('Push our image') {
+        stage('Push image') {
             steps{
                 sh """
                     docker login -u krishna1708 -p Abcd97@4321
