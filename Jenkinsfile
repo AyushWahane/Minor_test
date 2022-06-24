@@ -6,7 +6,7 @@ pipeline {
     }
     agent any
     stages {
-        stage('Clone Git Repository') {
+        stage('Clone Git Repo') {
             steps{
                 sh """
                     git clone https://github.com/AyushWahane/Minor_test.git
