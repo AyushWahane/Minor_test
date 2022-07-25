@@ -18,8 +18,8 @@ pipeline {
             steps{
                 sh """
                     cd Minor_test
-                    docker login -u krishna1708 -p Abcd97@4321
-                    docker build -t krishna1708/minor_test1:latest .
+                    sudo docker login -u krishna1708 -p Abcd97@4321
+                    sudo docker build -t krishna1708/minor_test1:latest .
                 """
             }
         }
@@ -28,8 +28,8 @@ pipeline {
         stage('Push image') {
             steps{
                 sh """
-                    docker login -u krishna1708 -p Abcd97@4321
-                    docker push krishna1708/minor_test1:latest
+                    sudo docker login -u krishna1708 -p Abcd97@4321
+                    sudo docker push krishna1708/minor_test1:latest
                 """
             }
         }
@@ -37,7 +37,7 @@ pipeline {
         stage('Cleaning up') {
             steps{
                 sh """
-                    docker rmi krishna1708/minor_test1:latest
+                    sudo docker rmi krishna1708/minor_test1:latest
                 """
             }
         }
